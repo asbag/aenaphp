@@ -1,1 +1,53 @@
-Hola {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Avion list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Modelo</th>
+                <th>Maxpasajeros</th>
+                <th>Horasalida</th>
+                <th>Horallegada</th>
+                <th>Codigolicencia</th>
+                <th>Estadolicencia</th>
+                <th>Caducidadlicencia</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('avion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.modelo }}</td>
+                <td>{{ entity.maxPasajeros }}</td>
+                <td>{% if entity.horaSalida %}{{ entity.horaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.horaLlegada %}{{ entity.horaLlegada|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.codigoLicencia }}</td>
+                <td>{{ entity.estadoLicencia }}</td>
+                <td>{% if entity.caducidadLicencia %}{{ entity.caducidadLicencia|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('avion_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('avion_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('avion_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

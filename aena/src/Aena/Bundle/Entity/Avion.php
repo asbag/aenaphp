@@ -66,7 +66,7 @@ class Avion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="caducidad_licencia", type="date")
+     * @ORM\Column(name="caducidad_licencia", type="datetime")
      */
     private $caducidadLicencia;
 

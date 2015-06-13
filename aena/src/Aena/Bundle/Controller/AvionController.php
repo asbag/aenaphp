@@ -2,27 +2,246 @@
 
 namespace Aena\Bundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Aena\Bundle\Entity\Avion;
+use Aena\Bundle\Form\AvionType;
 
+/**
+ * Avion controller.
+ *
+ * @Route("/avion")
+ */
 class AvionController extends Controller
 {
+
     /**
-     * @Route("/clarinete/{david}")
+     * Lists all Avion entities.
+     *
+     * @Route("/", name="avion")
+     * @Method("GET")
      * @Template()
      */
-    public function indexAction($david)
+    public function indexAction()
     {
-        return array('name' => $david);
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('AenaBundle:Avion')->findAll();
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+    /**
+     * Creates a new Avion entity.
+     *
+     * @Route("/", name="avion_create")
+     * @Method("POST")
+     * @Template("AenaBundle:Avion:new.html.twig")
+     */
+    public function createAction(Request $request)
+    {
+        $entity = new Avion();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('avion_show', array('id' => $entity->getId())));
+        }
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
     }
 
     /**
-     * @Route("/clarinete2/{david}")
+     * Creates a form to create a Avion entity.
+     *
+     * @param Avion $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Avion $entity)
+    {
+        $form = $this->createForm(new AvionType(), $entity, array(
+            'action' => $this->generateUrl('avion_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Create'));
+
+        return $form;
+    }
+
+    /**
+     * Displays a form to create a new Avion entity.
+     *
+     * @Route("/new", name="avion_new")
+     * @Method("GET")
      * @Template()
      */
-    public function pruebaAction($david)
+    public function newAction()
     {
-        return array('david' => $david);
+        $entity = new Avion();
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
+
+    /**
+     * Finds and displays a Avion entity.
+     *
+     * @Route("/{id}", name="avion_show")
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AenaBundle:Avion')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Avion entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+     * Displays a form to edit an existing Avion entity.
+     *
+     * @Route("/{id}/edit", name="avion_edit")
+     * @Method("GET")
+     * @Template()
+     */
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AenaBundle:Avion')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Avion entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+    * Creates a form to edit a Avion entity.
+    *
+    * @param Avion $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Avion $entity)
+    {
+        $form = $this->createForm(new AvionType(), $entity, array(
+            'action' => $this->generateUrl('avion_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Update'));
+
+        return $form;
+    }
+    /**
+     * Edits an existing Avion entity.
+     *
+     * @Route("/{id}", name="avion_update")
+     * @Method("PUT")
+     * @Template("AenaBundle:Avion:edit.html.twig")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AenaBundle:Avion')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Avion entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('avion_edit', array('id' => $id)));
+        }
+
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+    /**
+     * Deletes a Avion entity.
+     *
+     * @Route("/{id}", name="avion_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('AenaBundle:Avion')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Avion entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('avion'));
+    }
+
+    /**
+     * Creates a form to delete a Avion entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('avion_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->getForm()
+        ;
     }
 }
