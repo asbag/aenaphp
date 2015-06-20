@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Avion</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Modelo</th>
+                <td>{{ entity.modelo }}</td>
+            </tr>
+            <tr>
+                <th>Maxpasajeros</th>
+                <td>{{ entity.maxPasajeros }}</td>
+            </tr>
+            <tr>
+                <th>Horasalida</th>
+                <td>{{ entity.horaSalida|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Horallegada</th>
+                <td>{{ entity.horaLlegada|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Codigolicencia</th>
+                <td>{{ entity.codigoLicencia }}</td>
+            </tr>
+            <tr>
+                <th>Estadolicencia</th>
+                <td>{{ entity.estadoLicencia }}</td>
+            </tr>
+            <tr>
+                <th>Caducidadlicencia</th>
+                <td>{{ entity.caducidadLicencia|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('avion') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('avion_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
