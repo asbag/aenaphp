@@ -1,0 +1,9 @@
+<?php
+$partido = new Partido('Colombia', 'Peru');
+$partido->attach(new Mail());
+$partido->attach(new Log());
+$partido->gol('Colombia');
+$partido->gol('Colombia');
+$partido->gol('Peru');
+echo $partido->getScore();
+?>

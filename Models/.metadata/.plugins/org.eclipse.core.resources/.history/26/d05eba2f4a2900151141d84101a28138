@@ -1,0 +1,7 @@
+<?php
+class ProductController {
+	public function create () {
+	// Some post data validation logic here
+	// Now we need to instantiate our product
+	}
+}

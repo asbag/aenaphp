@@ -1,0 +1,6 @@
+<?php
+
+interface iDataBase {
+	public function execQuery($query);
+	public function prepareQuery();
+}

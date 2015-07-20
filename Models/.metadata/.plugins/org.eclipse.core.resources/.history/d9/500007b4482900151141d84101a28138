@@ -1,0 +1,3 @@
+<?php
+$product = new Product_Chair('0001','INGOLF Chair');
+$product = new Product_Table('0002','STOCKHOLN Table'); 

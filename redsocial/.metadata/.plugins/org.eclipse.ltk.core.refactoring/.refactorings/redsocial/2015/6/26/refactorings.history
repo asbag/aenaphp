@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;redsocial/classes/Database&apos; to &apos;DataBase.php&apos;" description="Rename resource &apos;Database&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="classes/Database" name="DataBase.php" stamp="1435248564927" updateReferences="true"/>
+</session>

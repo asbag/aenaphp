@@ -1,0 +1,6 @@
+<?php
+
+abstract class Product {
+	private $sku;
+	private $name;extends
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="src"/>
+	<buildpathentry kind="src" path="vendor/symfony/http-foundation/Resources/stubs"/>
+	<buildpathentry kind="src" path="vendor/phpunit/phpunit-mock-objects/PHPUnit"/>
+	<buildpathentry kind="src" path="vendor/phpunit/phpunit/PHPUnit"/>
+	<buildpathentry kind="src" path="vendor/monolog/monolog/src/Monolog"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-code-coverage/PHP"/>
+	<buildpathentry kind="src" path="vendor/symfony/http-kernel"/>
+	<buildpathentry excluding="Resources/stubs/" kind="src" path="vendor/symfony/http-foundation"/>
+	<buildpathentry kind="src" path="vendor/symfony/yaml"/>
+	<buildpathentry kind="src" path="vendor/silex/silex/src/Silex"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-token-stream/PHP"/>
+	<buildpathentry kind="src" path="vendor/pimple/pimple/lib"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="vendor/symfony/event-dispatcher"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-text-template/src"/>
+	<buildpathentry kind="src" path="vendor/symfony/debug"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-file-iterator/src"/>
+	<buildpathentry kind="src" path="vendor/psr/log"/>
+	<buildpathentry kind="src" path="vendor/composer"/>
+	<buildpathentry kind="src" path="vendor/phpunit/php-timer/src"/>
+	<buildpathentry kind="src" path="vendor/symfony/routing"/>
+</buildpath>

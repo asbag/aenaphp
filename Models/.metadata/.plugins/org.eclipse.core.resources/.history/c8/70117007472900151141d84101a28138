@@ -1,0 +1,4 @@
+<?php
+abtract class Product {
+	
+}

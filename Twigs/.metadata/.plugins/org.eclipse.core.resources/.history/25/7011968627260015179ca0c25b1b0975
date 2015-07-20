@@ -1,0 +1,10 @@
+<?php
+$instancia = Singleton::getInstance();
+echo "Instancia quedo en: " . $instancia->incrementar() . "\n";
+$serializado = serialize($instancia);
+$nuevaInstancia = unserialize($serializado);
+echo "Deserializado: " . $nuevaInstancia->incrementar() . "\n";
+echo "Deserializado: " . $nuevaInstancia->incrementar() . "\n";
+echo "Deserializado: " . $nuevaInstancia->incrementar() . "\n";
+echo "Instancia sigue en: " . ($instancia->incrementar()-1) . "\n";
+?>

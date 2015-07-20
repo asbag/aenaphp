@@ -1,0 +1,45 @@
+<?php
+/**
+ * 
+ * @author David Mezquíriz Osés
+ * @copyright David Mezquíriz 2015
+ * Structure of wishes keeped in database by the table meta
+ */
+
+
+class Meta {
+	function __construct() {}
+	
+	
+	/**
+	 * Returns the selected row from 'meta' table
+	 * @param void
+	 * @return array statement
+	 */
+	public static function getAll () {
+		$query = "select * from meta";
+		try {
+			$statement = Database::getInstance()->getDb()->prepare($query);
+			$statement->execute();
+			$statement->fetchAll(pdo::FETCH_ASSOC);
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
+	
+	public static function getById ($id) {
+		$query = "select * from meta where idMeta = :idMeta";
+		
+		try {
+			$statement = Database::getInstance()->getDb()->prepare($query);
+			$statement->bindParam(":idMeta", $id);
+			return $statement->execute();
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+		
+	}
+	
+	
+	
+}

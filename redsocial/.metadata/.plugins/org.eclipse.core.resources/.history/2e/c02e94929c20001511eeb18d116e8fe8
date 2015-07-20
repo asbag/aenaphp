@@ -1,0 +1,20 @@
+<?php
+class Prueba implements iPrueba {
+	
+	/* (non-PHPdoc)
+	 * @see iPrueba::uno()
+	 */
+	public function uno() {
+		echo __FILE__;
+
+	}
+
+	/* (non-PHPdoc)
+	 * @see iPrueba::dos()
+	 */
+	public function dos() {
+		echo __FILE__;
+
+	}
+
+}

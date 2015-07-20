@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Clase Partido
+ * En este caso este es nuestro sujeto - Observable
+ */
+class Partido implements \SplSubject {
+	protected $teams = array();
+	protected $observers = array();
+	
+	public function __construct($team1, $team2) {
+		$this->teams($team1 => 0, $team2 => 0);
+	}
+}

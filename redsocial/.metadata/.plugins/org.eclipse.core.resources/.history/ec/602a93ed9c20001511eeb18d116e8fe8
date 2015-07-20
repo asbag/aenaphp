@@ -1,0 +1,2 @@
+<?php
+require_once 'prueba/dao/Prueba.php';

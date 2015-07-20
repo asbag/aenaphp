@@ -1,0 +1,8 @@
+<?php
+/**
+ * Segundo Observador, guarda en un archivo
+ */
+
+class Log implements \SplObserver {
+	
+}

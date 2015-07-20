@@ -1,0 +1,15 @@
+<?php
+
+namespace raiz;
+
+class DataBaseDao {
+	public function __construct () {
+		echo __CLASS__;
+		echo "\n";
+	}
+	
+	public function adios () {
+		echo "adios";
+	}
+}
+?>

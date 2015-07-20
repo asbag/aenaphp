@@ -1,0 +1,13 @@
+<?php
+/**
+ * @author David Mezquíriz
+ * @copyright 2015
+ */
+
+function ItemQuery ($itemname) {
+	srand(crc32($itemname));
+	$result = array('count' => rand(1,550), 'size' => rand(50,200));
+	return $result;
+}
+
+$opts = Array();

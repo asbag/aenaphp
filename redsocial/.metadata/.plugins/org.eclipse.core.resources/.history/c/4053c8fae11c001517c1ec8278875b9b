@@ -1,0 +1,8 @@
+<?php
+interface iUserDao {
+	/**
+	 * @var 
+	 */
+	public function getUserById($id);
+	public function getUserByName($name);
+}

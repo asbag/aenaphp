@@ -1,0 +1,10 @@
+<?php 
+$instance = Singleton::getInstance();
+
+echo "Class instance remained at " . $instance->increase() . "\n";
+$myClon = clon($instance);
+echo "Clon: " . $myClon->increase() . "\n";
+echo "Clon: " . $myClon->increase() . "\n";
+echo "Clon: " . $myClon->increase() . "\n";
+echo "Intance (increase - 1) remained at:" . ($instance->increase() - 1) . "\n";
+?>

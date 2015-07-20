@@ -1,0 +1,11 @@
+<?php
+class User {
+	private $db_con;
+	
+	public function __construct($db_Con) {
+		$this->$db_con = $db_Con;
+		
+		
+	}
+	
+}

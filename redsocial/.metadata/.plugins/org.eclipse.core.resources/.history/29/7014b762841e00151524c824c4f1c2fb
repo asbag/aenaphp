@@ -1,0 +1,15 @@
+<?php
+
+namespace proyecto;
+
+class DataBaseDao {
+	public function __construct () {
+		echo __CLASS__;
+		echo "\n\r";
+	}
+	
+	public function adios () {
+		echo __FUNCTION__;
+	}
+}
+?>

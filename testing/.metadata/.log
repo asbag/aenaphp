@@ -1,0 +1,26 @@
+!SESSION 2015-07-19 17:25:51.879 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.php.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.php.product
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2015-07-19 17:31:03.238
+!MESSAGE Error parsing metadata repository
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 509, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 1203, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 1506, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 1790, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 1954, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 3877, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 4442, column 62: Missing required attribute in "property": value
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2015-07-19 17:31:03.239
+!MESSAGE Error in file:/home/soporte/Descargas/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content57179950.jar at line 5000, column 62: Missing required attribute in "property": value

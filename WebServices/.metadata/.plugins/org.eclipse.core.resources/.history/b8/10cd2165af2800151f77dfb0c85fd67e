@@ -1,0 +1,11 @@
+<?php
+require_once 'Database.php';
+
+$query = "select * from meta";
+try {
+$statement = Database::getInstance()->getDb()->prepare($query);
+
+var_dump($statement);
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}

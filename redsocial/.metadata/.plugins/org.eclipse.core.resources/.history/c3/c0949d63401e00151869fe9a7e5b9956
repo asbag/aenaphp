@@ -1,0 +1,21 @@
+<?php
+namespace redsocial;
+/**
+ * User DAO interface
+ * @author David Mezquíriz Osés
+ *
+ */
+interface iUserDao {
+	/**
+	 * Get User object by his id
+	 * @param integer id
+	 * @return User object
+	 */
+	public function getUserById($id);
+	/**
+	 * Get User object by his name
+	 * @param string $name
+	 * @return User object
+	 */
+	public function getUserByName($name);
+}

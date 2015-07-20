@@ -1,0 +1,13 @@
+<?php
+class User {
+	private $db;
+	
+	public function __construct($db_Con) {
+		$this->db = $db_Con;	
+	}
+	
+	
+	public function register () {
+		
+	}
+}

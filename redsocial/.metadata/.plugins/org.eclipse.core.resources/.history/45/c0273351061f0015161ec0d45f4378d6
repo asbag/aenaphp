@@ -1,0 +1,13 @@
+<?php
+namespace test;
+
+class User
+{
+	public function hola () {
+		return "hola";
+	}
+	
+	public function bye () {
+		return "adiós";
+	}
+}

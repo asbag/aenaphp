@@ -1,0 +1,8 @@
+<?php
+namespace conf;
+
+define('THISBASEPATH', '/var/www/html/redsocial/redsocial');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'java_innova4b');
+define('DB_NAME', 'redsocial');

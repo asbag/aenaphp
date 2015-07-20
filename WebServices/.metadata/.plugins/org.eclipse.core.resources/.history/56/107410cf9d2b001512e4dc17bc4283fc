@@ -1,0 +1,9 @@
+<?php
+/**
+ * @author David Mezquíriz
+ * @copyright 2015
+ */
+
+function ItemQuery ($itemquery) {
+	
+}

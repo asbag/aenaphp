@@ -1,0 +1,12 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"Vendor\\LoginComposer\\" : "src"
+		}
+	},
+	"name" : "Vendor/LoginComposer",
+	"type" : "s",
+	"require" : {
+		"php" : ">=5.6"
+	}
+}

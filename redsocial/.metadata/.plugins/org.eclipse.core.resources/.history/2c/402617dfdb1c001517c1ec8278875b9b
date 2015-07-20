@@ -1,0 +1,13 @@
+<?php
+
+interface iDataBase {
+	public function execQuery($query);
+	public function prepareStatement($statement,$options_array);
+	public function execPreparedStatement($param_array);
+	private function getPredefinedQuery($action);
+	public function getTables();
+	public function totalNumRows ($table);
+	private function checkTable ($table);
+	public function getDbEngine();
+	
+}

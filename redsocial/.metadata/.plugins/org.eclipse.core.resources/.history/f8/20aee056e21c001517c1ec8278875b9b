@@ -1,0 +1,13 @@
+<?php
+interface iUserDao {
+	/**
+	 * @param integer id
+	 * @return User Class
+	 */
+	public function getUserById($id);
+	/**
+	 * 
+	 * @param string $name
+	 */
+	public function getUserByName($name);
+}

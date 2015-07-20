@@ -1,0 +1,9 @@
+<?php
+/**
+ * @author David Mezquíriz Osés
+ *	User Interface, is aimed at getting the whole data from User Entity
+ */
+
+	interface iUser {
+		
+	}

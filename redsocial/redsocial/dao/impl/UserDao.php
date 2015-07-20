@@ -1,0 +1,28 @@
+<?php
+//namespace redsocial;
+/**
+ * User Dao Class Implementation
+ * @author David Mezquíriz Osés
+ *
+ */
+
+class UserDao implements iUserDao {
+	
+	/* (non-PHPdoc)
+	 * @see iUserDao::getUserById()
+	 */
+	public function getUserById($id) {
+		$query = "select * from user where id = " . '$id';
+		
+
+	}
+
+	/* (non-PHPdoc)
+	 * @see iUserDao::getUserByName()
+	 */
+	public function getUserByName($name) {
+		// TODO: Auto-generated method stub
+
+	}
+
+}

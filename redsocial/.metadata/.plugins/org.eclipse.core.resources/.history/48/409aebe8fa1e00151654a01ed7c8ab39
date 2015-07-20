@@ -1,0 +1,13 @@
+<?php
+namespace core\models;
+
+class User
+{
+	public function hola () {
+		return "hola";
+	}
+	
+	public function bye () {
+		return "adios";
+	}
+}

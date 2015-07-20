@@ -1,0 +1,39 @@
+<?php
+class User {
+	/**
+	 * ID
+	 * @var integer
+	 */
+	private $id;
+	/**
+	 * FIRSTNAME
+	 * @var string
+	 */
+	private $firstname;
+	/**
+	 * SURNAME
+	 * @var string
+	 */
+	private $surname;
+	/**
+	 * SURNAME2
+	 * @var string
+	 */
+	private $surname2;
+	/**
+	 * EMAIL
+	 * @var string
+	 */
+	private $email;
+	/**
+	 * AGE
+	 * @var integer
+	 */
+	private $age;
+	/**
+	 * BIRTHDATE
+	 * @var DateTime
+	 */
+	private $birthdate;
+	private $login;
+}

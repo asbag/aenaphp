@@ -1,0 +1,8 @@
+david_company_redsocial:
+    resource: "@DavidCompanyRedsocialBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

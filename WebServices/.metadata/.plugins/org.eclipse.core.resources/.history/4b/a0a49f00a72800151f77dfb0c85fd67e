@@ -1,0 +1,15 @@
+<?php
+/**
+ * Get all the wishes from database
+ * @author David Mezquíriz Osés
+ * @copyright 2015. David Mezquíriz Osés
+ */
+
+spl_autoload_extensions('.php');
+spl_autoload_register('Meta');
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	//Handle get request
+	$metas = 
+}

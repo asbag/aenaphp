@@ -1,0 +1,7 @@
+<?php
+require_once 'Database.php';
+
+$query = "select * from meta";
+$statement = Database::getInstance()->getDb()->prepare($query);
+
+var_dump($statement);

@@ -1,0 +1,6 @@
+<?php
+require_once 'Database.php';
+
+$statement = Database::getInstance()->getDb()->prepare($query);
+
+var_dump($statement);

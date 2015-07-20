@@ -1,0 +1,3 @@
+<?php
+$wsdl = 'http://localhost/WebServices/WebServices3/demo.wsdl';
+$client = new SoapClient($wsdl);

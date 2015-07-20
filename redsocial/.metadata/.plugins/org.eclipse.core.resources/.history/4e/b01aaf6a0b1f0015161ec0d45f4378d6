@@ -1,0 +1,7 @@
+<?php
+namespace core\controllers;
+
+class HomeController
+{
+
+}

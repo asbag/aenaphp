@@ -1,0 +1,20 @@
+{% extends "base.admin.html.twig" %}
+{% block body %}
+{{ parent() }}
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Phone Number</th>
+</tr>
+{% for comp in comps %}
+<tr>
+	<td>{{ comp.id }}</td>
+	<td>{{ comp.name }}</td>
+	<td>{{ comp.phone_number }}</td>
+	<td><a href="delete.php?id={{ comp.id }}">Delete</a></td>
+	<td><a href="update.php?id={{ comp.id }}">Update</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

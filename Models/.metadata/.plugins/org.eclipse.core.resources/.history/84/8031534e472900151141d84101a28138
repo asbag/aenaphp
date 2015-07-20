@@ -1,0 +1,9 @@
+<?php
+
+abstract class Product {
+	private $sku;
+	private $name;
+	protected $type = null;
+	
+	
+}

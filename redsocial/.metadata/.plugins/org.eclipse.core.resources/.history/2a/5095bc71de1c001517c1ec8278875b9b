@@ -1,0 +1,8 @@
+<?php
+class User {
+	private $id;
+	private $firstname;
+	private $surname;
+	private $surname2;
+	
+}

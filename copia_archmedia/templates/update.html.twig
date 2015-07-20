@@ -1,0 +1,12 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %} 
+{{ parent() }}
+<form method="post" action="update.php?id={{ comp.id }}">
+<label>Name:</label>
+<input name="name" value="{{ comp.name }}"/>
+<label>Phone Number:</label>
+<input name="phone_number"  value="{{ comp.phone_number }}"/>
+<input type="submit" name="update" value="update">
+</form>
+{% endblock %}

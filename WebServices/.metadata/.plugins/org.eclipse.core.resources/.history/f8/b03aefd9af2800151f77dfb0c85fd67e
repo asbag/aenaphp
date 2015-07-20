@@ -1,0 +1,12 @@
+<?php
+require_once 'mysql_login.php';
+$dsn = DBENGINE . ':dbname='.DATABASE. ';host='.HOST.';portname='.PORTNAME . ';';
+$pdo = new PDO($dsn, USERNAME, PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$query = "select * from meta";
+try {
+$statement = $pdo->prepare($query);
+$statement->fetchAll(pdo::FETCH_ASSOC)
+var_dump($statement);
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}

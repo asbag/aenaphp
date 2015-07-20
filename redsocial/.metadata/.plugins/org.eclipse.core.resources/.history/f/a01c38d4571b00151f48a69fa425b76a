@@ -1,0 +1,7 @@
+<?php
+
+interface iDataBase {
+	public function listRows ();
+	public function addItem($param);
+	
+}

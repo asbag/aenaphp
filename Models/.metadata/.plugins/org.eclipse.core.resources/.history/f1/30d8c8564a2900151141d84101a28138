@@ -1,0 +1,12 @@
+<?php
+class ProductController {
+	public function create ($product_type) {
+		// Some post data validation logic here
+		// Now we need to instantiate our product
+		switch ($product_type) {
+			case 'chair':
+				$product = new Product_Chair($post['sku'], $post['name'])
+		}
+		
+	}
+}

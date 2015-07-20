@@ -1,0 +1,17 @@
+<?php
+class User {
+	private $db;
+	
+	public function __construct($db_Con) {
+		$this->db = $db_Con;	
+	}
+	
+	
+	public function register ($fname,$lname,$uname,$umail,$upass) {
+		try {
+			$new_password = password_hash($upass, PASSWORD_DEFAULT);
+		} catch (Exception $e) {
+			
+		}
+	}
+}

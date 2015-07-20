@@ -1,0 +1,12 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %} 
+{{ parent() }}
+<form method="post">
+<label>Name:</label>
+<input name="name"/>
+<label>Phone Number:</label>
+<input name="phone_number" />
+<input type="submit" name="create" value="create">
+</form>
+{% endblock %}

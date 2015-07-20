@@ -1,0 +1,287 @@
+<?php
+namespace database\dao;
+
+/**
+ * @author David Mezquíriz.
+ */
+
+
+class DataBaseDao implements \redsocial\interf\iDataBase {
+	/**
+	 * DataBase Engine
+	 * @var string
+	 */
+	
+	const DEFAULT_ENGINE = "mysql";
+	
+	/**
+	 * PDO Handler
+	 * @var PDO
+	 * @access private
+	 */
+	
+	private $pdoHandler = NULL;
+	
+	/**
+	 * PDO Statement
+	 * @var PDOStatement
+	 * @access private
+	 */
+	
+	private $pdoStatement = NULL;
+	
+	
+	/**
+	 * DataBase Name Engine for instance
+	 * @var string
+	 * @access private
+	 */
+	
+	private $dbEngine = NULL;
+	
+	/**
+	 * DataBase Name
+	 * @var string
+	 * @access private
+	 */
+	
+	private $dataBaseName = NULL;
+	
+	/**
+	 * Array with names of database tables
+	 * @var array
+	 * @access private
+	 */
+	
+	private $tableArray = array();
+	
+	/**
+	 * Table Name we are working
+	 * @var string
+	 * @access private
+	*/
+	
+	private $table = NULL;
+	
+	
+	
+	
+	/**
+	 * Create a database instance
+	 * @param no params
+	 * @throws PDOException
+	 */
+	public function __construct($db_host = conf\DB_HOST, $db_name = conf\DB_NAME, $db_user = conf\DB_USER, $db_password = conf\DB_PASSWORD, $dbEngine = "mysql") {
+		try
+		{
+			if (!$this->dbEngine) {
+				$this->dbEngine = self::DEFAULT_ENGINE;
+			}
+			$dsn = "$dbEngine:host=$db_host;dbname=$db_name";
+			$this->dataBaseName=$db_name;
+			$this->pdoHandler = new PDO($dsn,$db_user,$db_password);
+			$this->pdoHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
+	
+	
+	
+	
+	
+	/**
+	 *  (non-PHPdoc)
+	 * @see iDataBase::execQuery()
+	 * Execute a database SQL
+	 * @param string $query
+	 * @return array
+	 * @throws PDOException
+	 * @access public
+	 */
+	public function execQuery($statement) {
+		$this->table = NULL;
+		$this->pdoStatement = $this->pdoHandler->query($statement);
+		
+		if ($this->pdoStatement instanceof PDOStatement) {
+			if (pgreg_match('/^(select|show)/i',$this->pdoStatement->queryString)) {
+				return $this->pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+			} else {
+				$this->pdoStatement->rowCount();
+			}
+		}
+	}
+	
+
+	/** (non-PHPdoc)
+	 * @see iDataBase::prepareStatement()
+	 * Prepare a statement for its execution
+	 * @param string $statement
+	 * @param array $options_array
+	 * @access public
+	 */
+	public function prepareStatement($statement, $options_array) {
+		$this->pdoStatement = $this->pdoHandler->prepare($statement,$options_array);
+	}
+
+	/** (non-PHPdoc)
+	 * @see iDataBase::execPreparedStatement()
+	 * Execute a prepared statement
+	 * @param array $array_parametros
+	 * @throws Exception
+	 * @access public
+	 
+	 */
+	public function execPreparedStatement($param_array) {
+		if (!($this->pdoStatement instanceof PDOStatement)) {
+			throw new Exception('Its mandatory to prepare iDataBase::prepareStatement');
+		}
+		$this->pdoStatement->execute($param_array);
+	}
+
+
+	/**
+	 * @return array Return predefined query for certain queries depending on the database Engine
+	 * @param string $action
+	 * @throws Exception
+	 * @throws PDOException
+	 * @access private
+	 */
+	
+	private function getPredefinedQuery($action) {
+		$actions_array = array();
+	
+		switch ($this->dbEngine){
+				
+			case "mysql":
+	
+				$actions_array["tables"] = "SHOW TABLES FROM {$this->dataBaseName}";
+				$actions_array["tablefields"] = "SHOW COLUMNS FROM {$this->table}";
+	
+				break;
+	
+			case "pgsql":
+	
+				$actions_array["tables"] =  "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';";
+				$actions_array["tablefields"] = "SELECT column_name, data_type, is_nullable, column_default FROM
+				information_schema.columns WHERE table_name='{$this->table}'";
+					
+				break;
+	
+			case "Oracle":
+	
+				$actions_array["tables"] = "SELECT * FROM dba_tables";
+	
+				break;
+	
+			case "MSSQL":
+	
+				$actions_array["tables"] = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE
+				TABLE_TYPE = 'BASE TABLE'";
+	
+				break;
+		}
+	
+		if(!isset($actions_array[$action])){
+			throw new Exception("Unable to execute the action $action for {$this->dbEngine}");
+		}
+	
+		return $actions_array[$action];
+	}
+	
+	
+	/**
+	 * Get array of database tables
+	 * @return array
+	 * @throws PDOException
+	 * @access public
+	 */
+	
+	public function getTables()
+	{
+		if(count($this->arrayTablas) == 0){
+				
+			$array = $this->exeQuery($this->getQueryPredefinida("tables"));
+			if(count($array) > 0){
+	
+	
+				foreach($array as $indice => $array_datos){
+					switch ($this->motorBd){
+							
+						case "mysql":
+	
+							$this->arrayTablas[] = $array_datos["Tables_in_".$this->nombreBaseDatos];
+							break;
+						case "pgsql":
+								
+							$this->arrayTablas[] = $array_datos["table_name"];
+							break;
+					}
+				}
+			}
+		}
+			
+		return $this->arrayTablas;
+	}
+	
+	/**
+	 * Get number of rows of table
+	 * @param string $table
+	 * @return int
+	 * @throws PDOException
+	 * @access public
+	 */
+	
+	public function totalNumRows ($table)
+	{
+		$this->checkTable($table);
+		$array = $this->exeQuery("SELECT count(*) FROM $table");
+		return $array[0]["count"];
+	}
+	
+	/**
+	 * Check if table passed exists in database
+	 * @param string $table
+	 * @throws Exception
+	 * @throws PDOException
+	 * @access private
+	 */
+	
+	private function checkTable ($table)
+	{
+		if(count($this->tableArray) == 0){
+			$this->getTables();
+		}
+	
+		if(!in_array($table, $this->tableArray)){
+				
+			throw new Exception("The table $table does not exist in database
+			{$this->nombreBaseDatos}");
+		}
+	}
+	
+	
+	/**
+	 * Get database engine
+	 * @return string
+	 * @access public
+	 */
+	
+	public function getDbEngine()
+	{
+		return $this->dbEngine;
+	}
+	
+	
+	
+	/**
+	 * Destructor
+	 * @access public
+	 */
+	
+	public function __destruct()
+	{
+		//$this->pdoHandler = NULL;
+	}	
+}

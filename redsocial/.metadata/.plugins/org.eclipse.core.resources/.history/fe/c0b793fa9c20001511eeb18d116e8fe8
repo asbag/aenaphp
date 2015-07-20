@@ -1,0 +1,6 @@
+<?php
+require_once 'prueba/dao/Prueba.php';
+
+$a = new Prueba();
+$a->uno();
+$a->dos();

@@ -1,0 +1,78 @@
+<?php
+namespace redsocial;
+
+/**
+ * @author David Mezquíriz.
+ */
+require_once 'conf/globals.inc';
+
+class DataBaseDao {
+	/**
+	 * DataBase Engine
+	 * @var string
+	 */
+	
+	const DEFAULT_ENGINE = "mysql";
+	
+	/**
+	 * PDO Handler
+	 * @var PDO
+	 * @access private
+	 */
+	
+	private $pdoHandler = NULL;
+	
+	/**
+	 * PDO Statement
+	 * @var PDOStatement
+	 * @access private
+	 */
+	
+	private $pdoStatement = NULL;
+	
+	
+	/**
+	 * DataBase Name Engine for instance
+	 * @var string
+	 * @access private
+	 */
+	
+	private $dbEngine = NULL;
+	
+	/**
+	 * DataBase Name
+	 * @var string
+	 * @access private
+	 */
+	
+	private $dataBaseName = NULL;
+	
+	/**
+	 * Array with names of database tables
+	 * @var array
+	 * @access private
+	 */
+	
+	private $tableArray = array();
+	
+	/**
+	 * Table Name we are working
+	 * @var string
+	 * @access private
+	*/
+	
+	private $table = NULL;
+	
+	
+	
+	
+	/**
+	 * Create a database instance
+	 * @param no params
+	 * @throws PDOException
+	 */
+	public function __construct($db_host = DB_HOST, $db_name = DB_NAME, $db_user = DB_USER, $db_password = DB_PASSWORD, $dbEngine = "mysql") {
+		echo __CLASS__;
+		echo "hola";
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"Micasa\\TwigsProject1\\" : "src"
+		}
+	},
+	"name" : "Micasa/TwigsProject1",
+	"require" : {
+		"php" : ">=5.6",
+		"twig/twig": "~1.0"
+	}
+}

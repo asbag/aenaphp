@@ -1,0 +1,6 @@
+<?php
+
+/**
+ * Clase Partido
+ * En este caso este es nuestro sujeto - Observable
+ */

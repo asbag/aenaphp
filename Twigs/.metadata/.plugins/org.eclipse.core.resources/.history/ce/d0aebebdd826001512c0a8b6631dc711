@@ -1,0 +1,23 @@
+<?php
+spl_autoload_extensions(".php");
+
+spl_autoload_register(function ($class) {
+	//$class = str_replace('\\','/', $class);
+	$class = "./" . $class . ".php";
+
+	if (file_exists($class)) {
+		require_once "$class";
+	} else {
+		throw new Exception('Error en la carga de $class');
+	}
+
+});
+
+$partido = new Partido('Colombia', 'Peru');
+$partido->attach(new Mail());
+$partido->attach(new Log());
+$partido->gol('Colombia');
+$partido->gol('Colombia');
+$partido->gol('Peru');
+echo $partido->getScore();
+?>

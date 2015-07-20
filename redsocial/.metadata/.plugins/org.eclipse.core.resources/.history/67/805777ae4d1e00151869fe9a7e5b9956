@@ -1,0 +1,11 @@
+<?php
+
+class DataBaseDao {
+	public function __construct () {
+		echo "hola";
+	}
+	
+	public fuction adios () {
+		return "adios";
+	}
+}

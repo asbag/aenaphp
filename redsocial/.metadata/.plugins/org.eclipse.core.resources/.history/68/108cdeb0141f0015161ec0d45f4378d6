@@ -1,0 +1,51 @@
+<?php
+require_once 'database/dao/DataBaseDao.php';
+require_once 'model/DataBaseDao.php';
+
+//Define the paths to the directories holding class files
+$paths = array(
+		'database/dao',
+		'model'
+);
+/*
+define('PROJECT_PATH','.');
+//Add the paths to the class directories to the include path.
+set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $paths));
+//Add the file extensions to the SPL.
+spl_autoload_extensions(".class.php,.php,.inc");
+
+
+spl_autoload_register(function($class_name) {
+	global $paths;
+	$class_name = str_replace('\\', '/', $class_name);
+	$resolved = PROJECT_PATH . DIRECTORY_SEPARATOR . $paths[0] . DIRECTORY_SEPARATOR . ucwords($class_name) . '.php';
+	$resolved2 = PROJECT_PATH . DIRECTORY_SEPARATOR . $paths[1] . DIRECTORY_SEPARATOR . ucwords($class_name) . '.php';
+	
+	if(file_exists($resolved)) {
+		require_once "$resolved";
+	} else {
+		return new \Exception('Fail to load class ' . $resolved);
+	}
+	if(file_exists($resolved2)) {
+		require_once "$resolved2";
+	} else {
+		return new \Exception('Fail to load class ' . $resolved2);
+	}
+	
+});
+*/
+
+$statement = "select * from users where id = :id";
+
+try {
+	$db = new DataBaseDao();
+	$options_array = array(":id" => "1");
+
+	$db->prepareStatement($statement);
+	$array_result = $db->execQuery($options_array);
+} catch (Exception $e) {
+	echo $e->getMessage();
+}
+
+$user = new User();
+

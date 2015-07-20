@@ -1,0 +1,77 @@
+<?php
+
+
+/**
+ * @author David Mezquíriz.
+ */
+require_once 'conf/globals.inc';
+
+class DataBaseDao {
+	/**
+	 * DataBase Engine
+	 * @var string
+	 */
+	
+	const DEFAULT_ENGINE = "mysql";
+	
+	/**
+	 * PDO Handler
+	 * @var PDO
+	 * @access private
+	 */
+	
+	private $pdoHandler = NULL;
+	
+	/**
+	 * PDO Statement
+	 * @var PDOStatement
+	 * @access private
+	 */
+	
+	private $pdoStatement = NULL;
+	
+	
+	/**
+	 * DataBase Name Engine for instance
+	 * @var string
+	 * @access private
+	 */
+	
+	private $dbEngine = NULL;
+	
+	/**
+	 * DataBase Name
+	 * @var string
+	 * @access private
+	 */
+	
+	private $dataBaseName = NULL;
+	
+	/**
+	 * Array with names of database tables
+	 * @var array
+	 * @access private
+	 */
+	
+	private $tableArray = array();
+	
+	/**
+	 * Table Name we are working
+	 * @var string
+	 * @access private
+	*/
+	
+	private $table = NULL;
+	
+	
+	
+	
+	public function __construct() {
+		echo "dentro de la clase";
+	}
+	
+	public function mierda () {
+		echo __CLASS__;
+		return "sale";
+	}
+}

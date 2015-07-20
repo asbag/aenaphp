@@ -1,0 +1,32 @@
+<?php
+
+class Singleton {
+	
+	private static $instance;
+	private $contador;
+	
+	private function __construct() {
+		echo "I've created class " . __CLASS__ . "\n";
+		$this->contador = 0;
+	}
+	
+	public static function getInstance () {
+		if (!self::$instance instanceof self) {
+			self::$instance = new self;
+		}
+		return Singleton::$instance;
+	}
+	
+	public function increase () {
+		return ++$this->contador;
+	}
+	
+	public function decrease () {
+		return --$this->contador;
+	}
+	
+	//Para evitar clonados que produzcan valores no deseados
+	public function __clone() {
+		trigger_error("You cannot clone an instance of : " . get_class($this))
+	}
+}

@@ -1,0 +1,10 @@
+<?php
+/**
+ * User Dao Class Implementation
+ * @author David Mezquíriz Osés
+ *
+ */
+
+class UserDao implements iUserDao {
+	
+}

@@ -1,0 +1,12 @@
+<?php
+class User {
+	
+	private $id;
+	private $firstname;
+	private $surname;
+	private $surname2;
+	private $email;
+	private $age;
+	private $birthdate;
+	private $login;
+}
